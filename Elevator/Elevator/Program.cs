@@ -11,10 +11,7 @@ namespace Elevator
         static void Main(string[] args)
         {
             Console.WriteLine("This is my elevator program");
-            Console.WriteLine("Please enter a PIN");
-            string myPin = Console.ReadLine();
-
-            Elevator elevatorOne = new Elevator(myPin);
+            Elevator elevatorOne = new Elevator();
             elevatorOne.callElevator();
         }
     }

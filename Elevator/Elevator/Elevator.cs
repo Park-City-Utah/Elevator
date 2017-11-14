@@ -15,10 +15,10 @@ namespace Elevator
         private int currentFloor;
         private string pin;
 
-        public Elevator(string pinIn)
+        public Elevator()
         {
-            this.pin = pinIn;
-
+            Console.WriteLine("Please enter a PIN");
+            this.pin = Console.ReadLine();
         }
 
         //Allows us to select an elevator
@@ -97,6 +97,7 @@ namespace Elevator
             else
                 return false;
         }
+       
 
     }
 }
