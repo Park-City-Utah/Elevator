@@ -10,44 +10,86 @@ namespace Elevator
     {
         private const int FLOORS_IN_BLDING = 5;
         private const int PIN_ATTEMPT_LIMIT = 5;
+        private const int PENTHOUSE = 5;
 
-        private int elevatorId;
+        private int elevatorId = 0;
         private int currentFloor;
-        private int selectedFloor;
         private string pin;
 
-        public Elevator(int idIn)
+        public Elevator(int pinIn)
         {
-            this.elevatorId = idIn;
+            this.elevatorId++;
+            this.pin = pinIn;
 
         }
 
         //Allows us to select an elevator
         public void callElevator(int id)
         {
-            //move
-            moveElevator();
+            Console.WriteLine("Please select a floor between 1 and 5");
+            int selectedFloor = Convert.ToInt32(Console.ReadLine());
+            if (0 < selectedFloor && selectedFloor <= FLOORS_IN_BLDING)
+            {
+                Console.WriteLine("You have selected floor: " + selectedFloor);
+                //move
+                moveElevator(selectedFloor);
+            }
+            else
+            {
+                Console.WriteLine("You have selected and incorrect floor!");
+                Console.ReadLine();
+            }
         }
 
         //Will allow elevator to move currentFloor = selectedFloor
-        public void moveElevator()
+        public void moveElevator( int selectedFloor)
         {
-            if (0 < selectedFloor && selectedFloor < 5)
+            if (0 < selectedFloor && selectedFloor < PENTHOUSE)
+            {
                 this.currentFloor = selectedFloor;
-            else if (selectedFloor == 5)
+                Console.WriteLine("You have arrived at floor: " + this.currentFloor + ". Goodbye");
+                Console.ReadLine();
+
+            }
+            else if (selectedFloor == PENTHOUSE)
             {
                 if (enterPin())
+                {
                     this.currentFloor = selectedFloor;
-
+                    Console.WriteLine("You have arrived at floor: " + this.currentFloor + ". Goodbye");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Goodbye!");
+                    Console.ReadLine();
+                }
             }
         }
 
         //Allows for penthouse acccess
         public bool enterPin()
         {
-            Console.WriteLine("Please enter your pin for penthour access: ");
-            string myPin = Console.ReadLine();
-            return validatePin(myPin);
+            int noAttempts = 0;
+            bool result = false;
+
+            do {
+                Console.WriteLine("Please enter your pin for penthouse access: ");
+                string myPin = Console.ReadLine();
+                result = validatePin(myPin);
+                if (result)
+                {
+                    Console.WriteLine("Acces Granted");
+                    return true;
+                }else
+                {
+                    Console.WriteLine("Incorrect pin.");
+                    noAttempts++;
+                }
+            }while(result == false && noAttempts < PIN_ATTEMPT_LIMIT);
+
+            Console.WriteLine("Number of attempts exceeded.");
+            return false;
         }
 
         public bool validatePin(string myPin)

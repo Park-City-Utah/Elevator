@@ -11,12 +11,10 @@ namespace Elevator
         static void Main(string[] args)
         {
             Console.WriteLine("This is my elevator program");
-            string x = Console.ReadLine();
+            Console.WriteLine("Please enter a PIN");
+            int myPin = Convert.ToInt32(Console.ReadLine());
 
-            //Create two elevator objects
-            Elevator elevatorOne = new Elevator(1);
-           // Elevator elevatorTwo = new Elevator(2);
-
+            Elevator elevatorOne = new Elevator(myPin);
             elevatorOne.callElevator(1);
         }
     }
