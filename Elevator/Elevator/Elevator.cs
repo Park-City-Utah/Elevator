@@ -71,6 +71,7 @@ namespace Elevator
             {
                 Console.WriteLine("Please enter your pin for penthouse access: ");
                 myPin = Console.ReadLine();
+
                 result = validatePin(myPin);
                 if (result)
                 {
@@ -82,7 +83,7 @@ namespace Elevator
                     Console.WriteLine("Incorrect pin.");
                     noAttempts++;
                 }
-            } while (result == false && noAttempts < PIN_ATTEMPT_LIMIT);
+            } while ((result == false) && (noAttempts < PIN_ATTEMPT_LIMIT));
 
             Console.WriteLine("Number of attempts exceeded.");
             return false;
