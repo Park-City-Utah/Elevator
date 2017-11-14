@@ -67,7 +67,8 @@ namespace Elevator
             bool result = false;
             string myPin;
 
-            do {
+            do
+            {
                 Console.WriteLine("Please enter your pin for penthouse access: ");
                 myPin = Console.ReadLine();
                 result = validatePin(myPin);
@@ -75,12 +76,13 @@ namespace Elevator
                 {
                     Console.WriteLine("Acces Granted");
                     return true;
-                }else
+                }
+                else
                 {
                     Console.WriteLine("Incorrect pin.");
                     noAttempts++;
                 }
-            }while(result == false && noAttempts < PIN_ATTEMPT_LIMIT);
+            } while (result == false && noAttempts < PIN_ATTEMPT_LIMIT);
 
             Console.WriteLine("Number of attempts exceeded.");
             return false;
@@ -88,7 +90,7 @@ namespace Elevator
 
         public bool validatePin(string myPin)
         {
-            if (this.pin == myPin)
+            if (this.pin.Equals(myPin))
                 return true;
             else
                 return false;
