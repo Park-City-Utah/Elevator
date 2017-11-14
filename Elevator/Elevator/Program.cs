@@ -13,6 +13,7 @@ namespace Elevator
             Console.WriteLine("This is my elevator program");
             Elevator elevatorOne = new Elevator();
             elevatorOne.callElevator();
+            Console.ReadLine();
         }
     }
 }

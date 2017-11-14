@@ -34,18 +34,16 @@ namespace Elevator
             else
             {
                 Console.WriteLine("You have selected and incorrect floor!");
-                Console.ReadLine();
             }
         }
 
         //Will allow elevator to move currentFloor = selectedFloor
-        public void moveElevator( int selectedFloor)
+        public void moveElevator(int selectedFloor)
         {
             if (0 < selectedFloor && selectedFloor < PENTHOUSE)
             {
                 this.currentFloor = selectedFloor;
                 Console.WriteLine("You have arrived at floor: " + this.currentFloor + ". Goodbye");
-                Console.ReadLine();
 
             }
             else if (selectedFloor == PENTHOUSE)
@@ -54,12 +52,10 @@ namespace Elevator
                 {
                     this.currentFloor = selectedFloor;
                     Console.WriteLine("You have arrived at floor: " + this.currentFloor + ". Goodbye");
-                    Console.ReadLine();
                 }
                 else
                 {
                     Console.WriteLine("Goodbye!");
-                    Console.ReadLine();
                 }
             }
         }
@@ -69,10 +65,11 @@ namespace Elevator
         {
             int noAttempts = 0;
             bool result = false;
+            string myPin;
 
             do {
                 Console.WriteLine("Please enter your pin for penthouse access: ");
-                string myPin = Console.ReadLine();
+                myPin = Console.ReadLine();
                 result = validatePin(myPin);
                 if (result)
                 {
