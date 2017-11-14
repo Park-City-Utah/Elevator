@@ -12,10 +12,10 @@ namespace Elevator
         {
             Console.WriteLine("This is my elevator program");
             Console.WriteLine("Please enter a PIN");
-            int myPin = Convert.ToInt32(Console.ReadLine());
+            string myPin = Console.ReadLine();
 
             Elevator elevatorOne = new Elevator(myPin);
-            elevatorOne.callElevator(1);
+            elevatorOne.callElevator();
         }
     }
 }

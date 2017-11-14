@@ -12,19 +12,17 @@ namespace Elevator
         private const int PIN_ATTEMPT_LIMIT = 5;
         private const int PENTHOUSE = 5;
 
-        private int elevatorId = 0;
         private int currentFloor;
         private string pin;
 
-        public Elevator(int pinIn)
+        public Elevator(string pinIn)
         {
-            this.elevatorId++;
             this.pin = pinIn;
 
         }
 
         //Allows us to select an elevator
-        public void callElevator(int id)
+        public void callElevator()
         {
             Console.WriteLine("Please select a floor between 1 and 5");
             int selectedFloor = Convert.ToInt32(Console.ReadLine());
