@@ -21,7 +21,6 @@ namespace Elevator
             this.pin = Console.ReadLine();
         }
 
-        //Allows us to select an elevator
         public void callElevator()
         {
             Console.WriteLine("Please select a floor between 1 and 5");
