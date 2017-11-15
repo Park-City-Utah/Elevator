@@ -11,7 +11,7 @@ namespace Elevator
         static void Main(string[] args)
         {
             Console.WriteLine("This is my elevator program");
-            Elevator elevatorOne = new Elevator();
+            Elevator elevatorOne = new Elevator("1234");
             elevatorOne.callElevator();
             Console.ReadLine();
         }

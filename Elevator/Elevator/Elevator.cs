@@ -11,14 +11,25 @@ namespace Elevator
         private const int FLOORS_IN_BLDING = 5;
         private const int PIN_ATTEMPT_LIMIT = 5;
         private const int PENTHOUSE = 5;
-
-        private int currentFloor;
         private string pin;
+
+        private int currentFloor { get; set; }
+        public string Pin
+        {
+            get { return pin; }
+            set { pin = value; }
+        }
 
         public Elevator()
         {
-            Console.WriteLine("Please enter a PIN");
-            this.pin = Console.ReadLine();
+            this.pin = "0000";
+            this.currentFloor = 1;
+        }
+
+        public Elevator(string pinIn)
+        {
+            this.pin = pinIn;
+            this.currentFloor = 1;
         }
 
         public void callElevator()
@@ -40,8 +51,9 @@ namespace Elevator
         //Will allow elevator to move currentFloor = selectedFloor
         public void moveElevator(int selectedFloor)
         {
-            if (0 < selectedFloor && selectedFloor < PENTHOUSE)
+            if ((0 < selectedFloor) && (selectedFloor < PENTHOUSE))
             {
+                floorTravelMessage(selectedFloor);
                 this.currentFloor = selectedFloor;
                 Console.WriteLine("You have arrived at floor: " + this.currentFloor + ". Goodbye");
 
@@ -50,6 +62,7 @@ namespace Elevator
             {
                 if (enterPin())
                 {
+                    floorTravelMessage(selectedFloor);
                     this.currentFloor = selectedFloor;
                     Console.WriteLine("You have arrived at floor: " + this.currentFloor + ". Goodbye");
                 }
@@ -75,7 +88,7 @@ namespace Elevator
                 result = validatePin(myPin);
                 if (result)
                 {
-                    Console.WriteLine("Acces Granted");
+                    Console.WriteLine("Access Granted");
                     return true;
                 }
                 else
@@ -95,6 +108,18 @@ namespace Elevator
                 return true;
             else
                 return false;
+        }
+
+        public void floorTravelMessage(int selectedFloorIn)
+        {
+            for (int i = this.currentFloor; i <= selectedFloorIn; i++)
+            {
+                if (i == 1)
+                    Console.WriteLine("Floor: Lobby");
+                else
+                    Console.WriteLine("Floor: " + i);
+            }
+
         }
        
 
